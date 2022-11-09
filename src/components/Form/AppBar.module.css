@@ -1,0 +1,29 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 64px;
+  margin-left: 250px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: darkorchid;
+  height: 64px;
+  width: 100%;
+}
+
+.colorTitle {
+  color:white;
+}
+.caption {
+  color: white;
+}

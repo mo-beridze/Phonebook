@@ -1,0 +1,131 @@
+import { useSelector } from 'react-redux';
+import AuthNav from './AuthNav';
+import AppBar from '@mui/material/AppBar';
+import s from './AppBar.module.css';
+import Navigation from './Navigation';
+import UserMenu from './UserMenu';
+import authSelectors from '../redux/auth/auth-selector';
+import { useState } from 'react';
+import {
+  Grid,
+  Toolbar,
+  Typography,
+  // Tabs,
+  // Tab,
+  Box,
+  Button,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
+import { Link } from 'react-router-dom';
+
+import DrawerComp from './DrawerComp';
+import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
+// import NoAccountsSharpIcon from '@mui/icons-material/NoAccountsSharp';
+
+export default function NavBar() {
+  const theme = useTheme();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'));
+  const [value, setValue] = useState();
+  return (
+    <AppBar sx={{ backgroundColor: '#064789', position: 'absolute' }}>
+      <Toolbar>
+        {isMatch ? (
+          <>
+            <Typography>
+              <AccountCircleSharpIcon></AccountCircleSharpIcon>
+            </Typography>
+            <DrawerComp></DrawerComp>
+          </>
+        ) : (
+          <Grid container sx={{ placeItems: 'center' }}>
+            <Grid item xs={2}>
+              <Typography>
+                <AccountCircleSharpIcon></AccountCircleSharpIcon>
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                component={Link}
+                to={'/'}
+                sx={{
+                  marginLeft: 'auto',
+                  backgroundColor: '#427AA1',
+                  color: '#EBF2FA',
+                  '&:hover': {
+                    backgroundColor: '#EBF2FA',
+                    color: 'black',
+                  },
+                }}
+                variant="contained"
+              >
+                Home
+              </Button>
+              <Button
+                component={Link}
+                to={'/contacts'}
+                sx={{
+                  marginLeft: 1,
+                  backgroundColor: '#427AA1',
+                  color: '#EBF2FA',
+                  '&:hover': {
+                    backgroundColor: '#EBF2FA',
+                    color: 'black',
+                  },
+                }}
+                variant="contained"
+              >
+                Contacts
+              </Button>
+            </Grid>
+          </Grid>
+        )}
+        {isLoggedIn ? (
+          <UserMenu />
+        ) : (
+          <Grid item xs={3} sx={{ marginRight: 12 }}>
+            <Box display="flex">
+              <Button
+                component={Link}
+                to={'/register'}
+                sx={{
+                  marginLeft: 'auto',
+                  backgroundColor: '#427AA1',
+                  color: '#EBF2FA',
+                  '&:hover': {
+                    backgroundColor: '#EBF2FA',
+                    color: 'black',
+                  },
+                }}
+                variant="contained"
+              >
+                Register
+              </Button>
+              <Button
+                component={Link}
+                to={'/login'}
+                sx={{
+                  marginLeft: 1,
+                  backgroundColor: '#427AA1',
+                  color: '#EBF2FA',
+                  '&:hover': {
+                    backgroundColor: '#EBF2FA',
+                    color: 'black',
+                  },
+                }}
+                variant="contained"
+              >
+                LogIn
+              </Button>
+            </Box>
+          </Grid>
+        )}
+      </Toolbar>
+    </AppBar>
+    // <header className={s.header}>
+    //   <Navigation />
+
+    // </header>
+  );
+}
