@@ -1,9 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import Form from "./components/Form/ContactsView/Form";
-import ContactList from "./components/Form/ContactsView/ContactList";
+import { useEffect } from "react";
 import s from "./components/Form/Main.module.css";
-import Filter from "./components/Form/ContactsView/Filter";
 import { Route, Routes } from "react-router-dom";
 import RegisterView from "./components/Form/RegisterView";
 import LoginView from "./components/Form/LoginView";
@@ -23,7 +20,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 export default function App() {
   const theme = createTheme({
     typography: {
-      fontFamily: ["Raleway", "sans - serif"].join(","),
+      fontFamily: ["Space Grotesk", "sans-serif"].join(","),
     },
   });
   const dispatch = useDispatch();
@@ -33,7 +30,7 @@ export default function App() {
     if (token) {
       dispatch(authOperation.fetchCurrentUser());
     }
-  }, []);
+  }, [dispatch, token]);
   return (
     !isFetchingCurrentUser && (
       <ThemeProvider theme={theme}>

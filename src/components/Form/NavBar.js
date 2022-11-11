@@ -1,35 +1,27 @@
-import { useSelector } from 'react-redux';
-import AuthNav from './AuthNav';
-import AppBar from '@mui/material/AppBar';
-import s from './AppBar.module.css';
-import Navigation from './Navigation';
-import UserMenu from './UserMenu';
-import authSelectors from '../redux/auth/auth-selector';
-import { useState } from 'react';
+import { useSelector } from "react-redux";
+import AppBar from "@mui/material/AppBar";
+import UserMenu from "./UserMenu";
+import authSelectors from "../redux/auth/auth-selector";
 import {
   Grid,
   Toolbar,
   Typography,
-  // Tabs,
-  // Tab,
   Box,
   Button,
   useMediaQuery,
   useTheme,
-} from '@mui/material';
-import { Link } from 'react-router-dom';
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
-import DrawerComp from './DrawerComp';
-import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
-// import NoAccountsSharpIcon from '@mui/icons-material/NoAccountsSharp';
+import DrawerComp from "./DrawerComp";
+import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 
 export default function NavBar() {
   const theme = useTheme();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isMatch = useMediaQuery(theme.breakpoints.down('md'));
-  const [value, setValue] = useState();
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <AppBar sx={{ backgroundColor: '#064789', position: 'absolute' }}>
+    <AppBar sx={{ backgroundColor: "#064789", position: "absolute" }}>
       <Toolbar>
         {isMatch ? (
           <>
@@ -39,7 +31,7 @@ export default function NavBar() {
             <DrawerComp></DrawerComp>
           </>
         ) : (
-          <Grid container sx={{ placeItems: 'center' }}>
+          <Grid container sx={{ placeItems: "center" }}>
             <Grid item xs={2}>
               <Typography>
                 <AccountCircleSharpIcon></AccountCircleSharpIcon>
@@ -48,14 +40,14 @@ export default function NavBar() {
             <Grid item xs={6}>
               <Button
                 component={Link}
-                to={'/'}
+                to={"/"}
                 sx={{
-                  marginLeft: 'auto',
-                  backgroundColor: '#427AA1',
-                  color: '#EBF2FA',
-                  '&:hover': {
-                    backgroundColor: '#EBF2FA',
-                    color: 'black',
+                  marginLeft: "auto",
+                  backgroundColor: "#427AA1",
+                  color: "#EBF2FA",
+                  "&:hover": {
+                    backgroundColor: "#EBF2FA",
+                    color: "black",
                   },
                 }}
                 variant="contained"
@@ -64,14 +56,14 @@ export default function NavBar() {
               </Button>
               <Button
                 component={Link}
-                to={'/contacts'}
+                to={"/contacts"}
                 sx={{
                   marginLeft: 1,
-                  backgroundColor: '#427AA1',
-                  color: '#EBF2FA',
-                  '&:hover': {
-                    backgroundColor: '#EBF2FA',
-                    color: 'black',
+                  backgroundColor: "#427AA1",
+                  color: "#EBF2FA",
+                  "&:hover": {
+                    backgroundColor: "#EBF2FA",
+                    color: "black",
                   },
                 }}
                 variant="contained"
@@ -88,14 +80,14 @@ export default function NavBar() {
             <Box display="flex">
               <Button
                 component={Link}
-                to={'/register'}
+                to={"/register"}
                 sx={{
-                  marginLeft: 'auto',
-                  backgroundColor: '#427AA1',
-                  color: '#EBF2FA',
-                  '&:hover': {
-                    backgroundColor: '#EBF2FA',
-                    color: 'black',
+                  marginLeft: "auto",
+                  backgroundColor: "#427AA1",
+                  color: "#EBF2FA",
+                  "&:hover": {
+                    backgroundColor: "#EBF2FA",
+                    color: "black",
                   },
                 }}
                 variant="contained"
@@ -104,14 +96,14 @@ export default function NavBar() {
               </Button>
               <Button
                 component={Link}
-                to={'/login'}
+                to={"/login"}
                 sx={{
                   marginLeft: 1,
-                  backgroundColor: '#427AA1',
-                  color: '#EBF2FA',
-                  '&:hover': {
-                    backgroundColor: '#EBF2FA',
-                    color: 'black',
+                  backgroundColor: "#427AA1",
+                  color: "#EBF2FA",
+                  "&:hover": {
+                    backgroundColor: "#EBF2FA",
+                    color: "black",
                   },
                 }}
                 variant="contained"
