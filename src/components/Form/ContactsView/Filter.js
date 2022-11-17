@@ -20,19 +20,6 @@ const Filter = ({ value, onChange }) => (
       />
     </Grid>
   </>
-  // <ul>
-  //   <li className={s.filter_item}>
-  //     <label className={s.label}>
-  //       Find contacts by name
-  //       <input
-  //         type="text"
-  //         value={value}
-  //         onChange={onChange}
-  //         className={s.input}
-  //       />
-  //     </label>
-  //   </li>
-  // </ul>
 );
 
 export default Filter;

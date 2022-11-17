@@ -3,32 +3,6 @@ import contactsOperatios from "../../redux/contacts/contacts-operations";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
-// import { RotatingLines } from 'react-loader-spinner';
-//
-// # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-// # dependencies
-// /node_modules
-// /.pnp
-// .pnp.js
-
-// # testing
-// /coverage
-
-// # production
-// /build
-
-// # misc
-// .DS_Store
-// .env.local
-// .env.development.local
-// .env.test.local
-// .env.production.local
-
-// npm-debug.log*
-// yarn-debug.log*
-// yarn-error.log*
-//
 
 export default function ContactList({ contacts }) {
   const dispatch = useDispatch();
@@ -37,7 +11,7 @@ export default function ContactList({ contacts }) {
     dispatch(contactsOperatios.getContacts());
   }, [dispatch]);
   return (
-    <ul>
+    <ul className={s.section__contacts}>
       {contacts &&
         contacts.map((contact) => (
           <li key={contact.id} className={s.item}>

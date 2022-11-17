@@ -1,8 +1,6 @@
 import { TextField, Typography, Grid, Button } from "@mui/material";
-import contactsOperatios from "../../redux/auth/auth-operations";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-// import { RotatingLines } from 'react-loader-spinner';
+import contactsOperatios from "../../redux/contacts/contacts-operations";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function Form() {

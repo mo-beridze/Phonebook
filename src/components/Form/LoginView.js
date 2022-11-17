@@ -1,44 +1,36 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from '@mui/material';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import authOperation from '../redux/auth/auth-operations';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
+import { Avatar, Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import authOperation from "../redux/auth/auth-operations";
+import PersonPinIcon from "@mui/icons-material/PersonPin";
 
 export default function LoginView() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const paperStyle = { padding: '30px 20px', width: 400, margin: '40px auto' };
+  const paperStyle = { padding: "30px 20px", width: 400, margin: "100px auto" };
   const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: '#427AA1' };
-  const textField = { margin: '10px 0' };
-  const boxButton = { display: 'flex' };
+  const avatarStyle = { backgroundColor: "#427AA1" };
+  const textField = { margin: "10px 0" };
+  const boxButton = { display: "flex" };
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'email':
+      case "email":
         return setEmail(value);
-      case 'password':
+      case "password":
         return setPassword(value);
       default:
         return;
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authOperation.login({ email, password }));
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
     console.log(e);
   };
   return (
@@ -62,7 +54,7 @@ export default function LoginView() {
             id="email"
             placeholder="Enter your email"
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
@@ -74,7 +66,7 @@ export default function LoginView() {
             id="password"
             placeholder="Enter your password"
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
@@ -83,10 +75,10 @@ export default function LoginView() {
               type="submit"
               variant="contained"
               sx={{
-                backgroundColor: '#427AA1',
-                '&:hover': {
-                  backgroundColor: '#EBF2FA',
-                  color: 'black',
+                backgroundColor: "#427AA1",
+                "&:hover": {
+                  backgroundColor: "#EBF2FA",
+                  color: "black",
                 },
               }}
             >
