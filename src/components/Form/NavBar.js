@@ -20,6 +20,7 @@ export default function NavBar() {
   const theme = useTheme();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  const isLarge = useMediaQuery(theme.breakpoints.down("xl"));
   return (
     <AppBar sx={{ backgroundColor: "#064789", position: "absolute" }}>
       <Toolbar>
@@ -76,42 +77,44 @@ export default function NavBar() {
         {isLoggedIn ? (
           <UserMenu />
         ) : (
-          <Grid item xs={3} sx={{ marginRight: 12 }}>
-            <Box display="flex">
-              <Button
-                component={Link}
-                to={"/register"}
-                sx={{
-                  marginLeft: "auto",
-                  backgroundColor: "#427AA1",
-                  color: "#EBF2FA",
-                  "&:hover": {
-                    backgroundColor: "#EBF2FA",
-                    color: "black",
-                  },
-                }}
-                variant="contained"
-              >
-                Register
-              </Button>
-              <Button
-                component={Link}
-                to={"/login"}
-                sx={{
-                  marginLeft: 1,
-                  backgroundColor: "#427AA1",
-                  color: "#EBF2FA",
-                  "&:hover": {
-                    backgroundColor: "#EBF2FA",
-                    color: "black",
-                  },
-                }}
-                variant="contained"
-              >
-                LogIn
-              </Button>
-            </Box>
-          </Grid>
+          isLarge === isLoggedIn && (
+            <Grid item xs={3} sx={{ marginRight: 12 }}>
+              <Box display="flex">
+                <Button
+                  component={Link}
+                  to={"/register"}
+                  sx={{
+                    marginLeft: "auto",
+                    backgroundColor: "#427AA1",
+                    color: "#EBF2FA",
+                    "&:hover": {
+                      backgroundColor: "#EBF2FA",
+                      color: "black",
+                    },
+                  }}
+                  variant="contained"
+                >
+                  Register
+                </Button>
+                <Button
+                  component={Link}
+                  to={"/login"}
+                  sx={{
+                    marginLeft: 1,
+                    backgroundColor: "#427AA1",
+                    color: "#EBF2FA",
+                    "&:hover": {
+                      backgroundColor: "#EBF2FA",
+                      color: "black",
+                    },
+                  }}
+                  variant="contained"
+                >
+                  LogIn
+                </Button>
+              </Box>
+            </Grid>
+          )
         )}
       </Toolbar>
     </AppBar>

@@ -2,7 +2,16 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import authOperation from "../redux/auth/auth-operations";
 import Avatar from "@mui/material/Avatar";
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import authSelectors from "../redux/auth/auth-selector";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,7 +25,15 @@ export default function RegisterView() {
   const errorMessageStatus = useSelector(authSelectors.getErrorMessage);
   const [showNotification, setShowNotification] = useState(false);
 
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
   const paperStyle = { padding: "30px 20px", width: 400, margin: "100px auto" };
+  const responsivePaperStyle = {
+    padding: "30px 20px",
+    width: 300,
+    margin: "100px auto",
+  };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#427AA1" };
   const textField = { margin: "10px 0" };
@@ -56,85 +73,167 @@ export default function RegisterView() {
 
   return (
     <Grid>
-      <Paper elevation={20} style={paperStyle}>
-        <Grid align="center">
-          <Avatar style={avatarStyle}>
-            <PersonAddIcon />
-          </Avatar>
-          <h2 style={headerStyle}>Sign Up</h2>
-          <Typography variant="caption" gutterBottom>
-            Please fill this form to create an account !
-          </Typography>
-        </Grid>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            type="text"
-            style={textField}
-            fullWidth
-            label="Name"
-            id="name"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          <TextField
-            type="email"
-            style={textField}
-            fullWidth
-            label="Email"
-            id="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-          <TextField
-            type="password"
-            style={textField}
-            fullWidth
-            label="Password"
-            id="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <Box style={boxButton} justifyContent="center" alignItems="center">
-            <Button
-              onClick={notify}
-              type="submit"
-              variant="contained"
-              sx={{
-                backgroundColor: "#427AA1",
-                "&:hover": {
-                  backgroundColor: "#EBF2FA",
-                  color: "black",
-                },
+      {isMatch ? (
+        <Paper elevation={20} style={responsivePaperStyle}>
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              <PersonAddIcon />
+            </Avatar>
+            <h2 style={headerStyle}>Sign Up</h2>
+            <Typography variant="caption" gutterBottom>
+              Please fill this form to create an account !
+            </Typography>
+          </Grid>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              type="text"
+              style={textField}
+              fullWidth
+              label="Name"
+              id="name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
               }}
-            >
-              Sign up
-            </Button>
-            {errorMessageStatus && (
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
-            )}
-          </Box>
-        </form>
-      </Paper>
+            />
+            <TextField
+              type="email"
+              style={textField}
+              fullWidth
+              label="Email"
+              id="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <TextField
+              type="password"
+              style={textField}
+              fullWidth
+              label="Password"
+              id="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <Box style={boxButton} justifyContent="center" alignItems="center">
+              <Button
+                onClick={notify}
+                type="submit"
+                variant="contained"
+                sx={{
+                  backgroundColor: "#427AA1",
+                  "&:hover": {
+                    backgroundColor: "#EBF2FA",
+                    color: "black",
+                  },
+                }}
+              >
+                Sign up
+              </Button>
+              {errorMessageStatus && (
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
+              )}
+            </Box>
+          </form>
+        </Paper>
+      ) : (
+        <Paper elevation={20} style={paperStyle}>
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              <PersonAddIcon />
+            </Avatar>
+            <h2 style={headerStyle}>Sign Up</h2>
+            <Typography variant="caption" gutterBottom>
+              Please fill this form to create an account !
+            </Typography>
+          </Grid>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              type="text"
+              style={textField}
+              fullWidth
+              label="Name"
+              id="name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+            <TextField
+              type="email"
+              style={textField}
+              fullWidth
+              label="Email"
+              id="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <TextField
+              type="password"
+              style={textField}
+              fullWidth
+              label="Password"
+              id="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <Box style={boxButton} justifyContent="center" alignItems="center">
+              <Button
+                onClick={notify}
+                type="submit"
+                variant="contained"
+                sx={{
+                  backgroundColor: "#427AA1",
+                  "&:hover": {
+                    backgroundColor: "#EBF2FA",
+                    color: "black",
+                  },
+                }}
+              >
+                Sign up
+              </Button>
+              {errorMessageStatus && (
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
+              )}
+            </Box>
+          </form>
+        </Paper>
+      )}
     </Grid>
   );
 }
