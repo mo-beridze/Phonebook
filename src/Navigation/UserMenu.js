@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import authSelectors from "../redux/auth/auth-selector";
 import authOperation from "../redux/auth/auth-operations";
-import s from "./AppBar.module.css";
 import { Button, Typography, Grid } from "@mui/material";
 
 export default function UserMenu({ isLarge, isLoggedIn }) {

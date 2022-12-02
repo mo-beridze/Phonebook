@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import DrawerComp from "./DrawerComp";
+import DrawerComp from "../components/DrawerComp";
 import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 
 export default function NavBar() {
@@ -115,9 +115,5 @@ export default function NavBar() {
         )}
       </Toolbar>
     </AppBar>
-    // <header className={s.header}>
-    //   <Navigation />
-
-    // </header>
   );
 }

@@ -1,20 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
-import s from "./components/Form/Main.module.css";
+import s from "../src/Main.module.css";
 import { Route, Routes } from "react-router-dom";
-import RegisterView from "./components/Form/RegisterView";
-import LoginView from "./components/Form/LoginView";
-import NavBar from "./components/Form/NavBar";
-import PageContactsView from "./components/Form/ContactsView/PageContactsView";
-import authOperation from "./components/redux/auth/auth-operations";
+import RegisterView from "../src/Pages/Register Page/RegisterView";
+import LoginView from "../src/Pages/Login Page/LoginView";
+import NavBar from "./Navigation/NavBar";
+import PageContactsView from "./Pages/Contacts View Pages/PageContactsView";
+import authOperation from "./redux/auth/auth-operations";
 import { Provider } from "react-redux";
-import { store, persistor } from "./components/redux/store";
+import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { useDispatch, useSelector } from "react-redux";
-import authSelectors from "./components/redux/auth/auth-selector";
-import HomePage from "./components/Form/HomePage";
-import PublicRoute from "./components/Form/PublicRoute";
-import PrivateRoute from "./components/Form/PrivateRoute";
+import authSelectors from "./redux/auth/auth-selector";
+import HomePage from "./Pages/Home Page/HomePage";
+import PublicRoute from "./components/PublicRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 export default function App() {
