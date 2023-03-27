@@ -115,7 +115,7 @@ export default function Form() {
         <form onSubmit={handleSubmit}>
           <Grid align="center">
             <TextField
-              size="medium"
+              size="small"
               name="name"
               type="text"
               inputProps={{
