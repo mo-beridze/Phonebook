@@ -112,48 +112,50 @@ export default function Form() {
           </form>
         </Paper>
       ) : (
-        <Grid align="center">
-          <TextField
-            size="small"
-            name="name"
-            type="text"
-            inputProps={{
-              pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
-            }}
-            label="Name"
-            id="name"
-            onChange={handleChange}
-            value={name}
-          />
-          <TextField
-            name="number"
-            type="number"
-            size="small"
-            inputProps={{
-              inputMode: "numeric",
-              pattern: "+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}",
-            }}
-            label="Number"
-            id="number"
-            onChange={handleChange}
-            value={number}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{
-              marginLeft: "20px",
-              backgroundColor: "#e0e0bc",
-              color: "black",
-              "&:hover": {
-                backgroundColor: "#e3e2e2",
+        <form onSubmit={handleSubmit}>
+          <Grid align="center">
+            <TextField
+              size="small"
+              name="name"
+              type="text"
+              inputProps={{
+                pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+              }}
+              label="Name"
+              id="name"
+              onChange={handleChange}
+              value={name}
+            />
+            <TextField
+              name="number"
+              type="number"
+              size="small"
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}",
+              }}
+              label="Number"
+              id="number"
+              onChange={handleChange}
+              value={number}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                marginLeft: "20px",
+                backgroundColor: "#e0e0bc",
                 color: "black",
-              },
-            }}
-          >
-            Add contact
-          </Button>
-        </Grid>
+                "&:hover": {
+                  backgroundColor: "#e3e2e2",
+                  color: "black",
+                },
+              }}
+            >
+              Add contact
+            </Button>
+          </Grid>
+        </form>
       )}
       {/* {isLoading && (
           <RotatingLines
